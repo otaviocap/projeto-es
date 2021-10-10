@@ -18,7 +18,8 @@ ALLOWED_HOSTS = [
 # Application definition
 
 LOCAL_APPS = [
-    'users'
+    'users',
+    'posts'
 ]
 
 INSTALLED_APPS = [
