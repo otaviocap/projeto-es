@@ -9,5 +9,3 @@ class UsersConfig(AppConfig):
         # importing to use signals so profiles are created 
         # when users are created
         import users.signals
-
-        return super().ready()
