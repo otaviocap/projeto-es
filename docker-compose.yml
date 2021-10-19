@@ -3,7 +3,7 @@ services:
     # project: 
     #     build: .
     #     restart: unless-stopped
-    #     enviroment:
+    #     environment:
     #       - USE_DOCKER_LOCATION=true
     #     ports: 
     #         - 8000:8000

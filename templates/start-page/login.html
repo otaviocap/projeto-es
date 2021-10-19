@@ -1,0 +1,26 @@
+{% extends 'start-page/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra %}
+<form class="login100-form validate-form" method="POST">
+	{% csrf_token %}
+	<fieldset>
+		<span class="login100-form-title p-b-43">
+			LOGIN
+		</span>
+		{{ form | crispy }}
+	</fieldset>
+	<div class="container-login100-form-btn">
+		<button class="login100-form-btn" type='submit'>
+			Login
+		</button>
+	</div>
+	
+	<div class="text-center p-t-46 p-b-20">
+		<span class="txt2">
+			<a href="{% url 'register' %}">Criar conta</a>
+		</span>
+	</div>
+</form>
+{% endblock extra %}

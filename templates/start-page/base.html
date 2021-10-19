@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100">
+			{% block extra %}{% endblock extra %}
+
+			<div class="login100-more" style="background-image: url('{% static 'images/bg.jpeg' %}');">
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

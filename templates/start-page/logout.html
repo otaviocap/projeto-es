@@ -1,0 +1,22 @@
+{% extends 'start-page/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+{% block extra %}
+<form class="login100-form validate-form">
+	<span class="login100-form-title p-b-43">
+		VOCÊ FOI DESLOGADO!
+	</span>
+
+	<br />
+
+	<div class="container-login100-form-btn">
+		<a href="{% url 'login' %}" class="login100-form-btn">
+			Fazer login
+		</a>
+	</div>
+
+</form>
+
+{% endblock extra %}
