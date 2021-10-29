@@ -1,0 +1,31 @@
+{% for post in posts %}
+<div class="container-fluid card mt-5 mb-2 p-4" style="border-radius: 30px;">
+	<div class="d-flex flex-column">
+	<div class="d-flex justify-content-between">
+		<img src="{{ post.profile.image }}" class="rounded-circle align-self-start" style="width:32px">
+		
+		<b>{{ post.profile.name }}</b>
+
+		<p>{{ post.date }}</p>
+	</div>
+
+	<p>{{post.content}}</p>
+	
+	{% if post.image %}
+		<div class="d-flex flex-row">
+		<img src="{{ post.image }}" class="img-fluid" style="border-radius: 30px">
+		</div>
+	{% endif %}
+	<form class="d-flex flex-row mt-3">
+		<button type="button" class="btn">
+		<span class="fa fa-heart h5" style="color: #ebaef5"> {{post.likes}}</span>
+		</button> 
+
+		<button type="button" class="btn">
+		<i class="fa fa-comment h5" style="color: #ebaef5"> {{post.comments}}</i>
+		</button> 
+	</form>
+	</div>
+</div>
+
+{% endfor %}

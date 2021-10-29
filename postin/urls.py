@@ -22,14 +22,15 @@ from postin import settings
 
 def home_view(request):
     if request.user.is_authenticated:
-        return redirect('/home')
+        return redirect('home/')
     else:
-        return redirect('login')
+        return redirect('login/')
 
 urlpatterns = [
     path('', home_view),
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+    path('', include('posts.urls')),
 ]
 
 if settings.DEBUG:

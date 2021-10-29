@@ -1,0 +1,19 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra %}
+
+  <div class="container-fluid p-3 mt-5" style="background-color: #EDE2FF; color: white; border-radius: 30px;">
+    <input 
+      type="text"
+      placeholder="O que você gostaria de compartilhar com o mundo?"
+      style="border: none;" 
+      class="form-control form-control-lg bg-transparent" 
+    >
+    </input>
+  </div>
+
+  {% include 'posts/posts.html' %}
+
+{% endblock extra %}

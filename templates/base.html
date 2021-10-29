@@ -32,13 +32,14 @@
 
 	<link rel="icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}">
+
 	{% if title %}
 		<title> {{ title }} | Post In </title>
 	{% else %}
 		<title> Post In </title>
 	{% endif %}
 </head>
-<body style="background-color: #666666;">
+<body>
 	{% block content %}
 	{% endblock content %}
 

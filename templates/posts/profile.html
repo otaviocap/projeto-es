@@ -1,0 +1,17 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block extra %}
+
+  <div class="container-fluid justify-content-center align-items-center d-flex flex-column m-5 text-center">
+    <div class="w3-container">
+      <img src="/media/default.jpg" class="rounded-circle" style="height:106px;width:106px" alt="Avatar">
+      <p class="h4">Dog Dog</p>
+      <p class="muted">@dog</p>
+    </div>
+  </div>
+
+  {% include 'posts/posts.html' %}
+
+{% endblock extra %}
