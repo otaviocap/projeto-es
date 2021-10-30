@@ -4,14 +4,21 @@
 
 {% block extra %}
 
-  <div class="container-fluid p-3 mt-5" style="background-color: #EDE2FF; color: white; border-radius: 30px;">
-    <input 
-      type="text"
-      placeholder="O que você gostaria de compartilhar com o mundo?"
-      style="border: none;" 
-      class="form-control form-control-lg bg-transparent" 
-    >
-    </input>
+  <div
+    class="container-fluid p-3 mt-5" 
+    style="background-color: #EDE2FF; color: white; border-radius: 30px;">
+    <form method="post" action="/posts/">
+      {% csrf_token %}
+      <input 
+        type="text"
+        name="post_text"
+        placeholder="O que você gostaria de compartilhar com o mundo?"
+        style="border: none;" 
+        class="form-control form-control-lg bg-transparent" 
+        onkeydown="(event) => {if (event.keyCode == 13) { this.form.submit(); return false; }}"
+      >
+      </input>
+    </form>
   </div>
 
   {% include 'posts/posts.html' %}
