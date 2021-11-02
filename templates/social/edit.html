@@ -1,0 +1,20 @@
+{% extends 'social/base.html' %}
+{% load crispy_forms_tags %}
+{% load filters %}
+{% load static %}
+
+{% block extra %}
+<div class="container-fluid justify-content-center align-items-center d-flex flex-column m-5 text-center">
+    <img src="/media/{{user.profile.image}}" class="rounded-circle" style="height:106px;width:106px" alt="Avatar">
+    <br>
+    <p class="h4">{{user.username}}</p>
+    <p class="h5">{{user.email}}</p>
+
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ u_form|crispy }}
+		{{ p_form|crispy }}
+		<button class="btn btn-outline-info" type="submit">Atualizar</button>
+	</form>
+</div>
+{% endblock extra %}

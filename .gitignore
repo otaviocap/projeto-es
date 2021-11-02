@@ -129,5 +129,7 @@ dmypy.json
 .pyre/
 
 # Custom
-
-data
+data/
+media/post_images/
+media/profile_images/
+migrations/

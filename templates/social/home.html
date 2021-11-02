@@ -1,4 +1,4 @@
-{% extends 'posts/base.html' %}
+{% extends 'social/base.html' %}
 {% load crispy_forms_tags %}
 {% load static %}
 
@@ -7,7 +7,7 @@
   <div
     class="container-fluid p-3 mt-5" 
     style="background-color: #EDE2FF; color: white; border-radius: 30px;">
-    <form method="post" action="/posts/">
+    <form method="post" action="/posts/" class="d-flex flex-row">
       {% csrf_token %}
       <input 
         type="text"
@@ -16,11 +16,13 @@
         style="border: none;" 
         class="form-control form-control-lg bg-transparent" 
         onkeydown="(event) => {if (event.keyCode == 13) { this.form.submit(); return false; }}"
+        required
       >
       </input>
+      <button type="submit"><span class="fas fa-paper-plane btn" style="font-size:1.3rem;"></span></button>
     </form>
   </div>
 
-  {% include 'posts/posts.html' %}
+  {% include 'social/posts.html' %}
 
 {% endblock extra %}

@@ -1,0 +1,33 @@
+{% extends 'social/base.html' %}
+{% load crispy_forms_tags %}
+{% load filters %}
+{% load static %}
+
+{% block extra %}
+  <div class="container-fluid justify-content-center align-items-center d-flex flex-column m-5 text-center">
+    <img src="/media/{{profile_user.profile.image}}" class="rounded-circle" style="height:106px;width:106px" alt="Avatar">
+    <br>
+    <p class="h4">{{profile_user.username}}</p>
+    <div class="container d-flex flex-row justify-content-evenly align-items-center">
+      <p class="muted">Followers {{profile_user.profile.followers.all | length}}</p>
+      <p class="muted">Following {{profile_user.profile.following.all | length}}</p>
+    </div>
+
+    <p class="muted">{{profile_user.profile.biography}}</p>
+    {% if user != profile_user %}
+      <form method="post" action="/users/{{profile_user.username}}/follow" onsubmit="(event)=>event.preventDefault();">
+					{% csrf_token %}
+          {% if user|following:profile_user %}
+						<input type="submit" class="btn btn-danger" value="Deixar de Seguir">
+					{% else %}
+						<input type="submit" class="btn btn-primary" value="Seguir">
+					{% endif %}
+      </form>
+    {% else %}
+      <a href="{% url 'profile_edit' %}" class="btn btn-primary">Editar</a>
+    {% endif %}
+  </div>
+
+  {% include 'social/posts.html' %}
+
+{% endblock extra %}

@@ -1,0 +1,70 @@
+{% extends 'social/base.html' %}
+{% load crispy_forms_tags %}
+{% load filters %}
+{% load static %}
+
+{% block extra %}
+
+	<div class="container-fluid card mt-5 mb-2 p-4" style="border-radius: 30px;">
+		<div class="d-flex flex-column">
+			<a href="{% url 'profile' username=post.author.username %}" class="btn">
+				<div class="d-flex justify-content-between">
+					<img src="/media/{{ post.author.profile.image }}" class="rounded-circle align-self-start" style="width:32px">
+				
+					<b>{{ post.author.username }}</b>
+					<p>{{ post.date_posted | date:"d/m/Y" }}</p>
+				</div>
+			</a>
+
+			<p>{{post.content}}</p>
+			
+			{% if post.image %}
+				<div class="d-flex flex-row">
+					<img src="/media/{{ post.image }}" class="img-fluid" style="border-radius: 30px">
+				</div>
+			{% endif %}
+			<div class="d-flex flex-row mt-3">
+				<form method="post" action="/posts/{{post.pk}}/like" onsubmit="(event)=>event.preventDefault();">
+					{% csrf_token %}
+					<button type="submit" class="btn">
+					{% if user|liked:post.pk %}
+						<span class="fa fa-heart h5" style="color: #9f67a8"> {{ post.likes.all | length}}</span>
+					{% else %}
+						<span class="fa fa-heart h5" style="color: #ebaef5"> {{ post.likes.all | length}}</span>
+					{% endif %}
+					</button> 
+				</form>
+				<form method="post" action="/posts/{{post.pk}}/like">
+					<button type="button" class="btn">
+					<i class="fa fa-comment h5" style="color: #ebaef5"> {{ post.comments.all | length }}</i>
+					</button> 
+				</form>
+			</div>
+		</div>
+
+		<div
+		class="container-fluid p-3 mt-5" 
+		style="background-color: #EDE2FF; color: white; border-radius: 30px;"
+		>
+			<form method="post" action="/post/{{post.pk}}/" class="d-flex flex-row">
+				{% csrf_token %}
+				<input 
+				type="text"
+				name="post_text"
+				placeholder="O que você gostaria de comentar?"
+				style="border: none;" 
+				class="form-control form-control-lg bg-transparent" 
+				onkeydown="(event) => {if (event.keyCode == 13) { this.form.submit(); return false; }}"
+				required
+				>
+				</input>
+				<button type="submit"><span class="fas fa-paper-plane btn" style="font-size:1.3rem;"></span></button>
+			</form>
+		</div>
+
+		{% include 'social/posts.html' %}
+
+	</div>
+
+
+{% endblock extra %}

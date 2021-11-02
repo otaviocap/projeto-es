@@ -113,8 +113,6 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static', 
 ]
 
-# STATIC_ROOT = BASE_DIR / 'static'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_ROOT = BASE_DIR / "media"
@@ -122,4 +120,5 @@ MEDIA_URL = "/media/"
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-LOGIN_REDIRECT = 'home'
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
